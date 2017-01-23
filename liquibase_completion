@@ -9,8 +9,12 @@ _liq_complete()
   cur=${COMP_WORDS[COMP_CWORD]}
   cur=`echo $cur | sed 's/\\\\//g'`
   args="--defaultsFile"
-  args="$args --changeLogFile --username --password --url --classpath --driver --databaseClass --propertyProviderClass --defaultSchemaName --contexts --labels --defaultsFile --delimiter --driverPropertiesFile --changeExecListenerClass --changeExecListenerPropertiesFile --liquibaseCatalogName --liquibaseSchemaName --databaseChangeLogTableName --databaseChangeLogLockTableName --liquibaseSchemaName --includeSystemClasspath --promptForNonLocalDatabase --logLevel --logFile --currentDateTimeFunction --outputDefaultSchema --outputDefaultCatalog"
-  args="$args status update dropAll"
+  args="$args --changeLogFile --username --password --url --classpath --driver --contexts --labels --defaultsFile --includeSystemClasspath --logLevel --logFile" 
+  
+  args="$args status update dropAll dbDoc validate"
+  if [ -e "$HOME/conf/liquibase.completions" ]; then
+    args="$args "`cat "$HOME/conf/liquibase.completions"`
+  fi
   COMPREPLY=($(compgen -W "$args " -- "$cur" ))
 }
 
