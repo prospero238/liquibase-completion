@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# jieryn@gmail.com
 
 _liq_complete()
 {
@@ -11,7 +10,7 @@ _liq_complete()
   args="--defaultsFile"
   args="$args --changeLogFile --username --password --url --classpath --driver --contexts --labels --defaultsFile --includeSystemClasspath --logLevel --logFile" 
   
-  args="$args status update dropAll dbDoc validate"
+  args="$args status update dropAll dbDoc validate updateTestingRollback"
   if [ -e "$HOME/conf/liquibase.completions" ]; then
     args="$args "`cat "$HOME/conf/liquibase.completions"`
   fi
