@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# jieryn@gmail.com
+
+_liq_complete()
+{
+  local cur args
+
+  COMPREPLY=()
+  cur=${COMP_WORDS[COMP_CWORD]}
+  cur=`echo $cur | sed 's/\\\\//g'`
+  args="--defaultsFile"
+  args="$args --changeLogFile --username --password --url --classpath --driver --databaseClass --propertyProviderClass --defaultSchemaName --contexts --labels --defaultsFile --delimiter --driverPropertiesFile --changeExecListenerClass --changeExecListenerPropertiesFile --liquibaseCatalogName --liquibaseSchemaName --databaseChangeLogTableName --databaseChangeLogLockTableName --liquibaseSchemaName --includeSystemClasspath --promptForNonLocalDatabase --logLevel --logFile --currentDateTimeFunction --outputDefaultSchema --outputDefaultCatalog"
+  args="$args status update dropAll"
+  COMPREPLY=($(compgen -W "$args " -- "$cur" ))
+}
+
+
+
+complete -f -F  _liq_complete -o filenames liquibase 
+# COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
+# COMP_WORDBREAKS=${COMP_WORDBREAKS//=}
+
