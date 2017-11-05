@@ -10,7 +10,7 @@ _liq_complete()
   args="--defaultsFile"
   args="$args --changeLogFile --username --password --url --classpath --driver --contexts --labels --defaultsFile --includeSystemClasspath --logLevel --logFile" 
   
-  args="$args status update dropAll dbDoc validate updateTestingRollback"
+  args="$args status update updateSQL dropAll dbDoc validate updateTestingRollback"
   if [ -e "$HOME/conf/liquibase.completions" ]; then
     args="$args "`cat "$HOME/conf/liquibase.completions"`
   fi
@@ -20,6 +20,4 @@ _liq_complete()
 
 
 complete -f -F  _liq_complete -o filenames liquibase 
-# COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
-# COMP_WORDBREAKS=${COMP_WORDBREAKS//=}
 
